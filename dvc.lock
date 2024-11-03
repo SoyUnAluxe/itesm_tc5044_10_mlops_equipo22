@@ -1,0 +1,124 @@
+schema: '2.0'
+stages:
+  preprocess_data:
+    cmd: python src/data/preprocess.py
+    deps:
+    - path: data/raw/Steel_industry_data.csv
+      hash: md5
+      md5: 393295e8ec2bac97c1345b8ddc25bd1f
+      size: 2731386
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: a6c1ac9fca9a9cc61b1a57c3c3d9cb69
+      size: 2620
+    outs:
+    - path: data/processed/processed_dataset_X.csv
+      hash: md5
+      md5: b352c7d407a2047866c61ad48a323e9f
+      size: 6458583
+    - path: data/processed/processed_dataset_y.csv
+      hash: md5
+      md5: 8e1035d6c31981ae10d4fb64c9947ac4
+      size: 70090
+  train_model:
+    cmd: python src/models/train.py
+    deps:
+    - path: data/processed/processed_dataset_X.csv
+      hash: md5
+      md5: b352c7d407a2047866c61ad48a323e9f
+      size: 6458583
+    - path: data/processed/processed_dataset_y.csv
+      hash: md5
+      md5: 8e1035d6c31981ae10d4fb64c9947ac4
+      size: 70090
+    - path: params.yaml
+      hash: md5
+      md5: 3710324cf1e2ea0d9e1546b3def5a375
+      size: 554
+    - path: src/models/train.py
+      hash: md5
+      md5: 9ab59958c048aeef1c6441809c1bd33c
+      size: 5846
+    outs:
+    - path: saved_models/
+      hash: md5
+      md5: ebbe07101f8d1b50a5bb9c2adbc4dbe8.dir
+      size: 39608646
+      nfiles: 3
+  evaluate_model:
+    cmd: python src/evaluation/evaluate.py
+    deps:
+    - path: data/processed/processed_dataset_X.csv
+      hash: md5
+      md5: b352c7d407a2047866c61ad48a323e9f
+      size: 6458583
+    - path: data/processed/processed_dataset_y.csv
+      hash: md5
+      md5: 8e1035d6c31981ae10d4fb64c9947ac4
+      size: 70090
+    - path: models/steel_industry_model.keras
+      hash: md5
+      md5: bfcb9fe29995828b23485c3fde3c14b9
+      size: 69215
+    - path: src/evaluation/evaluate.py
+      hash: md5
+      md5: fbda352047fca293d1d8d19325acb414
+      size: 2256
+    outs:
+    - path: reports/evaluation.txt
+      hash: md5
+      md5: 4061764516e585320dee77430968f614
+      size: 36
+  run_tests:
+    cmd: python -m src.test.test_data_preprocessor
+    deps:
+    - path: data/raw/Steel_industry_data.csv
+      hash: md5
+      md5: 393295e8ec2bac97c1345b8ddc25bd1f
+      size: 2731386
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: a6c1ac9fca9a9cc61b1a57c3c3d9cb69
+      size: 2620
+    - path: src/test/test_data_preprocessor.py
+      hash: md5
+      md5: 62a69d1d8aec4ff406f887abada39c34
+      size: 3372
+  run_test_data:
+    cmd: python -m src.test.test_data_preprocessor
+    deps:
+    - path: data/raw/Steel_industry_data.csv
+      hash: md5
+      md5: 393295e8ec2bac97c1345b8ddc25bd1f
+      size: 2731386
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: a6c1ac9fca9a9cc61b1a57c3c3d9cb69
+      size: 2620
+    - path: src/test/test_data_preprocessor.py
+      hash: md5
+      md5: 62a69d1d8aec4ff406f887abada39c34
+      size: 3372
+  run_test_model:
+    cmd: python -m src.test.test_model_train
+    deps:
+    - path: data/processed/processed_dataset_X.csv
+      hash: md5
+      md5: b352c7d407a2047866c61ad48a323e9f
+      size: 6458583
+    - path: data/processed/processed_dataset_y.csv
+      hash: md5
+      md5: 8e1035d6c31981ae10d4fb64c9947ac4
+      size: 70090
+    - path: params.yaml
+      hash: md5
+      md5: 3710324cf1e2ea0d9e1546b3def5a375
+      size: 554
+    - path: src/models/train.py
+      hash: md5
+      md5: 9ab59958c048aeef1c6441809c1bd33c
+      size: 5846
+    - path: src/test/test_model_train.py
+      hash: md5
+      md5: e76f50d994fade4b373b1e23ba9475da
+      size: 2221

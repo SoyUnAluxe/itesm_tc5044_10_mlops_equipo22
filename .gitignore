@@ -1,0 +1,23 @@
+#Modelos
+/saved_models
+
+# Entorno virtual
+venv/
+.venv/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+
+# Otros archivos y carpetas que deseas ignorar
+*.log
+.dvc
+
+mlruns/
+saved_models/
+reports/
+

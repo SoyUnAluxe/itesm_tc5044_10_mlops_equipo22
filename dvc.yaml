@@ -1,0 +1,35 @@
+stages:
+  run_test_data:
+    cmd: python -m src.test.test_data_preprocessor
+    deps:
+      - src/data/preprocess.py
+      - src/test/test_data_preprocessor.py
+      - data/raw/Steel_industry_data.csv
+
+  preprocess_data:
+    cmd: python src/data/preprocess.py
+    deps:
+      - data/raw/Steel_industry_data.csv
+      - src/data/preprocess.py
+    outs:
+      - data/processed/processed_dataset_X.csv
+      - data/processed/processed_dataset_y.csv
+
+  run_test_model:
+    cmd: python -m src.test.test_model_train 
+    deps:
+      - src/models/train.py
+      - src/test/test_model_train.py
+      - params.yaml
+      - data/processed/processed_dataset_X.csv
+      - data/processed/processed_dataset_y.csv
+
+  train_model:
+    cmd: python src/models/train.py
+    deps:
+      - data/processed/processed_dataset_X.csv
+      - data/processed/processed_dataset_y.csv
+      - src/models/train.py
+      - params.yaml
+    outs:
+      - saved_models/

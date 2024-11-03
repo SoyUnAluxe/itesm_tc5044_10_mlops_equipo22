@@ -1,0 +1,30 @@
+base:
+
+data:
+  #loading data
+  input_data: "data/Steel_industry_data.csv"
+
+reports:
+  model: "models/steel_industry_model.keras" 
+
+mlflow:
+  experiment_name: "Steel_Industry_Classification"
+
+models:
+  - name: "RandomForest"
+    params:
+      test_size: 0.2
+      n_estimators: 150
+      max_depth: 15
+      random_state: 42
+  - name: "KNeighbors"
+    params:
+      test_size: 0.2
+      n_neighbors: 5
+      weights: "uniform"
+      algorithm: "auto"
+  - name: "DecisionTree"
+    params:
+      test_size: 0.2
+      max_depth: 10
+      min_samples_split: 2
