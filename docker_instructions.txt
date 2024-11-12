@@ -1,0 +1,47 @@
+SI NO TIENES UN MODELO EN TU DIRECTORIO /saved_models/nombredetumodelo.pkl sigue los siguientes pasos para generar el pipeline de entrenamiento y generar un modelo para montar al API
+
+Crear la carpeta /reports y /saved_models (si no existen)
+
+instalar el requirements en en .venv con python 3.11.10
+
+ejecutar dvc init
+
+ajustar los hiperparametros en params.yaml
+
+ejecutar dvc repro
+
+veras que se generaron 3 modelos de ml en /saved_models junto con dummy_columns, label_encoder_pca y scaler, todos son .pkl
+
+Copia el nombre del modelo de tu interes y sistituyelo en app.py (se encuentra en raiz) en la linea 
+model = joblib.load('saved_models/RandomForest_20241112_114024.pkl')    (aqui pueden agregarlo como parametro al YAML o en un YAML nuevo)
+
+
+Construir el contenedor:
+docker build -t flask_model_api
+
+
+Ejecutar el contenedor:
+docker-compose up
+
+Realiza las peticiones
+
+
+
+Ejemplo de request 
+METHOD: POST
+HOST: localhost:5000/predict
+BODY: {
+    "date": "05/01/2018 13:15",
+    "Usage_kWh": 50.08,
+    "Lagging_Current_Reactive.Power_kVarh": 10.12,
+    "Leading_Current_Reactive_Power_kVarh": 7.6,
+    "CO2(tCO2)": 0.02,
+    "Lagging_Current_Power_Factor": 98.02,
+    "Leading_Current_Power_Factor": 100,
+    "NSM": 900,
+    "WeekStatus": "Weekday",
+    "Day_of_week": "Monday"
+}
+
+
+
