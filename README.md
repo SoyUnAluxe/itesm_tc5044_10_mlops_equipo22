@@ -36,7 +36,7 @@ pip install -r requirements.txt
 Ejecuta el siguiente comando para inicializar DVC:
 
 ```bash
-dvc init
+dvc init -f
 ```
 
 ### 4. Ajustar Hiperparámetros
