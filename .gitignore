@@ -16,6 +16,7 @@ __pycache__/
 # Otros archivos y carpetas que deseas ignorar
 *.log
 .dvc
+!.dvc
 
 mlruns/
 saved_models/
