@@ -12,7 +12,7 @@ data_preprocessor = DataPreprocessor(raw_data_path='', processed_data_path='')
 app = Flask(__name__)
 
 # Cargar el modelo preentrenado
-model = joblib.load('saved_models/RandomForest_20241112_114024.pkl')
+model = joblib.load('saved_models/RandomForest_20241112_162218.pkl')
 le = joblib.load("saved_models/label_encoder.pkl")
 
 # Preprocesamiento, similar a DataPreprocessor
