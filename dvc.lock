@@ -37,13 +37,13 @@ stages:
       size: 554
     - path: src/models/train.py
       hash: md5
-      md5: 9ab59958c048aeef1c6441809c1bd33c
-      size: 5846
+      md5: 68456e94f62dfff4661e8115945625c3
+      size: 5866
     outs:
-    - path: saved_models/
+    - path: saved_models/ml_models/
       hash: md5
-      md5: ebeae17f07abc6ce83e1a7f551b3782b.dir
-      size: 39823718
+      md5: d0e923f7da562f3a7ac0a27bf0c35f46.dir
+      size: 39823542
       nfiles: 3
   evaluate_model:
     cmd: python src/evaluation/evaluate.py
@@ -116,8 +116,8 @@ stages:
       size: 554
     - path: src/models/train.py
       hash: md5
-      md5: d41e206c992e0b36278d00ade74363c1
-      size: 5791
+      md5: 68456e94f62dfff4661e8115945625c3
+      size: 5866
     - path: src/test/test_model_train.py
       hash: md5
       md5: e76f50d994fade4b373b1e23ba9475da

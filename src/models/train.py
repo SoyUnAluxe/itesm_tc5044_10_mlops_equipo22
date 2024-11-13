@@ -93,8 +93,9 @@ class ModelTrainer:
             model_name_unique = f"{model_name}_{timestamp}"
             mlflow.sklearn.log_model(model, artifact_path=f"models/{model_name_unique}")
 
+            os.makedirs("saved_models/ml_models", exist_ok=True)
             # Opcional: Guardar el modelo localmente con un nombre único
-            joblib.dump(model, f"saved_models/{model_name_unique}.pkl")
+            joblib.dump(model, f"saved_models/ml_models/{model_name_unique}.pkl")
 
             # Graficar la matriz de confusión
             self.plot_confusion_matrix(y_test, y_pred, model_name_unique)

@@ -32,4 +32,4 @@ stages:
       - src/models/train.py
       - params.yaml
     outs:
-      - saved_models/
+      - saved_models/ml_models/
