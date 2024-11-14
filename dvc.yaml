@@ -24,6 +24,12 @@ stages:
       - data/processed/processed_dataset_X.csv
       - data/processed/processed_dataset_y.csv
 
+  test_mlflow_configuration:
+    cmd: python -m src.test.test_mlflow_configuration
+    deps:
+      - src/test/test_mlflow_configuration.py
+      - params.yaml
+
   train_model:
     cmd: python src/models/train.py
     deps:
@@ -32,4 +38,11 @@ stages:
       - src/models/train.py
       - params.yaml
     outs:
+      - saved_models/ml_models/
+      
+  test_parameters_integrity:
+    cmd: python -m src.test.test_parameters_integrity
+    deps:
+      - src/test/test_parameters_integrity.py
+      - params.yaml
       - saved_models/ml_models/
