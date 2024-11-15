@@ -51,7 +51,7 @@ Corre el pipeline de DVC para entrenar los modelos y generar los archivos necesa
 dvc repro
 ```
 
-Esto generará tres modelos de machine learning en el directorio `/saved_models`, junto con los archivos `dummy_columns.pkl`, `label_encoder.pkl`, `pca.pkl` y `scaler.pkl`.
+Esto generará tres modelos de machine learning en el directorio `/saved_models`, junto con los archivos `label_encoder.pkl`, `pca.pkl` y `scaler.pkl`.
 
 ### 6. Seleccionar el Modelo
 
