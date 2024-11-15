@@ -108,4 +108,18 @@ Puedes hacer una solicitud POST al endpoint `/predict` para obtener una predicci
 }
 ```
 
+
+curl -X POST -H “Content-Type: application/json” -d ‘{ 
+    "date": "05/01/2018 13:15",
+    "Usage_kWh": 50.08,
+    "Lagging_Current_Reactive.Power_kVarh": 10.12,
+    "Leading_Current_Reactive_Power_kVarh": 7.6,
+    "CO2(tCO2)": 0.02,
+    "Lagging_Current_Power_Factor": 98.02,
+    "Leading_Current_Power_Factor": 100,
+    "NSM": 900,
+    "WeekStatus": "Weekday",
+    "Day_of_week": "Monday"
+}’ http://localhost:5000/predict
+
 La API responderá con una predicción en formato JSON, utilizando el modelo que configuraste.
