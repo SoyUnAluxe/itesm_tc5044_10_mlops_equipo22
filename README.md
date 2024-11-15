@@ -108,7 +108,7 @@ Puedes hacer una solicitud POST al endpoint `/predict` para obtener una predicci
 }
 ```
 
-
+```bash
 curl -X POST -H “Content-Type: application/json” -d ‘{ 
     "date": "05/01/2018 13:15",
     "Usage_kWh": 50.08,
@@ -121,5 +121,6 @@ curl -X POST -H “Content-Type: application/json” -d ‘{
     "WeekStatus": "Weekday",
     "Day_of_week": "Monday"
 }’ http://localhost:5000/predict
+```
 
 La API responderá con una predicción en formato JSON, utilizando el modelo que configuraste.
